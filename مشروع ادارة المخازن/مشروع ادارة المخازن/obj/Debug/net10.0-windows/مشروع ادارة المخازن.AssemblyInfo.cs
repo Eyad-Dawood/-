@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("مشروع ادارة المخازن")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71f559786b739352ffe41e2b25578aee2d34c0e3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c26c0bd35e831d93314c7b69093e9aef85008d7")]
 [assembly: System.Reflection.AssemblyProductAttribute("مشروع ادارة المخازن")]
 [assembly: System.Reflection.AssemblyTitleAttribute("مشروع ادارة المخازن")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
