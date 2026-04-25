@@ -1,4 +1,4 @@
-﻿using InventoryManagement.Data;
+using InventoryManagement.Data;
 using InventoryManagement.Models;
 using System;
 using System.Drawing;
@@ -33,8 +33,8 @@ namespace InventoryManagement
 
                 dgvProducts.Rows.Add(
                     p.Product_ID, p.Product_Name, p.Quantity,
-                    p.Minimum_Limit, p.Price.ToString("F2") + " ?",
-                    p.IsLowStock ? "⚠️ منخفض" : "✅ جيد");
+                    p.Minimum_Limit, p.Price.ToString("F2") + " ج.م",
+                    p.IsLowStock ? "مخزون منخفض" : "متوفر");
 
                 if (p.IsLowStock)
                     dgvProducts.Rows[dgvProducts.Rows.Count - 1]
@@ -46,25 +46,44 @@ namespace InventoryManagement
         {
             if (!ValidateStockFields(out Product p)) return;
             if (DatabaseManager.GetProductById(p.Product_ID) != null)
-            { MessageBox.Show("????? ?? ????? ??????!"); return; }
+            {
+                MessageBox.Show("يوجد صنف بهذا الكود بالفعل.");
+                return;
+            }
             if (DatabaseManager.AddProduct(p))
-            { MessageBox.Show("? ??? ???????!"); ClearStockFields(); LoadProducts(); }
-            else MessageBox.Show("? ??? ?????.");
+            {
+                MessageBox.Show("تمت إضافة الصنف بنجاح.");
+                ClearStockFields();
+                LoadProducts();
+            }
+            else MessageBox.Show("تعذر إضافة الصنف.");
         }
 
         private void btnUpdateProduct_Click(object sender, EventArgs e)
         {
             if (!ValidateStockFields(out Product p)) return;
             if (DatabaseManager.UpdateProduct(p))
-            { MessageBox.Show("? ?? ???????!"); ClearStockFields(); LoadProducts(); }
-            else MessageBox.Show("? ??? ?????.");
+            {
+                MessageBox.Show("تم تحديث الصنف بنجاح.");
+                ClearStockFields();
+                LoadProducts();
+            }
+            else MessageBox.Show("تعذر تحديث الصنف.");
         }
 
         private void btnDeleteProduct_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtProductId.Text)) { MessageBox.Show("????? ???? ?????!"); return; }
-            if (MessageBox.Show("??????", "?????", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            { DatabaseManager.DeleteProduct(txtProductId.Text); ClearStockFields(); LoadProducts(); }
+            if (string.IsNullOrEmpty(txtProductId.Text))
+            {
+                MessageBox.Show("يرجى اختيار صنف للحذف.");
+                return;
+            }
+            if (MessageBox.Show("هل أنت متأكد من حذف هذا الصنف؟", "تأكيد الحذف", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                DatabaseManager.DeleteProduct(txtProductId.Text);
+                ClearStockFields();
+                LoadProducts();
+            }
         }
 
         private void btnClearFields_Click(object sender, EventArgs e)
@@ -80,7 +99,7 @@ namespace InventoryManagement
             txtProductName.Text = row.Cells["Name"].Value?.ToString();
             txtProductQuantity.Text = row.Cells["Qty"].Value?.ToString();
             txtMinLimit.Text = row.Cells["Min"].Value?.ToString();
-            txtPrice.Text = row.Cells["Price"].Value?.ToString().Replace(" ?", "");
+            txtPrice.Text = row.Cells["Price"].Value?.ToString().Replace(" ج.م", "");
             txtProductId.ReadOnly = true;
         }
 
@@ -93,11 +112,17 @@ namespace InventoryManagement
         {
             p = null;
             if (string.IsNullOrWhiteSpace(txtProductId.Text) || string.IsNullOrWhiteSpace(txtProductName.Text))
-            { MessageBox.Show("????? ?????? ???????!"); return false; }
+            {
+                MessageBox.Show("يرجى إدخال الكود واسم الصنف.");
+                return false;
+            }
             if (!int.TryParse(txtProductQuantity.Text, out int qty) ||
                 !int.TryParse(txtMinLimit.Text, out int min) ||
                 !decimal.TryParse(txtPrice.Text, out decimal price))
-            { MessageBox.Show("?????? ????? ?????? ?????? ???? ?????!"); return false; }
+            {
+                MessageBox.Show("يرجى إدخال الكمية والحد الأدنى والسعر بصيغة صحيحة.");
+                return false;
+            }
             p = new Product
             {
                 Product_ID = txtProductId.Text.Trim(),

@@ -14,11 +14,11 @@ namespace InventoryManagement
         {
             dgvAlerts.Rows.Clear();
             dgvAlerts.Columns.Clear();
-            dgvAlerts.Columns.Add("ID", "?????");
-            dgvAlerts.Columns.Add("Name", "??????");
-            dgvAlerts.Columns.Add("Qty", "??????");
-            dgvAlerts.Columns.Add("Min", "???? ??????");
-            dgvAlerts.Columns.Add("Status", "??????");
+            dgvAlerts.Columns.Add("ID", "الكود");
+            dgvAlerts.Columns.Add("Name", "اسم الصنف");
+            dgvAlerts.Columns.Add("Qty", "الكمية");
+            dgvAlerts.Columns.Add("Min", "الحد الأدنى");
+            dgvAlerts.Columns.Add("Status", "الحالة");
 
             var list = DatabaseManager.GetLowStockProducts();
             lblLowStockCount.Text = list.Count.ToString();
@@ -26,7 +26,7 @@ namespace InventoryManagement
             foreach (var p in list)
             {
                 dgvAlerts.Rows.Add(p.Product_ID, p.Product_Name, p.Quantity,
-                    p.Minimum_Limit, p.Quantity == 0 ? "?? ????" : "?? ??????");
+                    p.Minimum_Limit, p.Quantity == 0 ? "نافد" : "منخفض");
                 dgvAlerts.Rows[dgvAlerts.Rows.Count - 1]
                     .DefaultCellStyle.BackColor = Color.FromArgb(60, 30, 30);
             }

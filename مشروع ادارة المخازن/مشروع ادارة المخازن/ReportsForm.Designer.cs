@@ -17,35 +17,71 @@ namespace InventoryManagement
 
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnReport = new Panel();
+            dgvReports = new DataGridView();
             lblSummary = new Label();
             lblTo = new Label();
             lblFrom = new Label();
             dtpTo = new DateTimePicker();
             dtpFrom = new DateTimePicker();
             btnShowReport = new Button();
-            dgvReport = new DataGridView();
             lblTitle = new Label();
             pnReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvReport).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvReports).BeginInit();
             SuspendLayout();
             // 
             // pnReport
             // 
             pnReport.BackColor = Color.FromArgb(30, 30, 47);
-            pnReport.Controls.Add(lblSummary);
-            pnReport.Controls.Add(dgvReport);
+            pnReport.Controls.Add(dgvReports);
             pnReport.Location = new Point(32, 101);
             pnReport.Name = "pnReport";
-            pnReport.Size = new Size(868, 541);
+            pnReport.Size = new Size(1084, 541);
             pnReport.TabIndex = 0;
+            // 
+            // dgvReports
+            // 
+            dgvReports.AllowUserToAddRows = false;
+            dgvReports.AllowUserToDeleteRows = false;
+            dgvReports.AllowUserToResizeColumns = false;
+            dgvReports.AllowUserToResizeRows = false;
+            dgvReports.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvReports.BackgroundColor = Color.FromArgb(18, 18, 30);
+            dgvReports.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(30, 30, 47);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.CornflowerBlue;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvReports.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvReports.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 18, 30);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 10F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(99, 102, 241);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvReports.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvReports.Dock = DockStyle.Fill;
+            dgvReports.EnableHeadersVisualStyles = false;
+            dgvReports.GridColor = Color.FromArgb(50, 50, 70);
+            dgvReports.Location = new Point(0, 0);
+            dgvReports.Name = "dgvReports";
+            dgvReports.RowHeadersWidth = 51;
+            dgvReports.Size = new Size(1084, 541);
+            dgvReports.TabIndex = 1;
             // 
             // lblSummary
             // 
             lblSummary.ForeColor = Color.FromArgb(0, 192, 0);
-            lblSummary.Location = new Point(318, 479);
+            lblSummary.Location = new Point(32, 648);
             lblSummary.Name = "lblSummary";
-            lblSummary.Size = new Size(507, 34);
+            lblSummary.Size = new Size(930, 34);
             lblSummary.TabIndex = 0;
             lblSummary.Text = "00.00 ج";
             // 
@@ -99,7 +135,7 @@ namespace InventoryManagement
             btnShowReport.FlatStyle = FlatStyle.Popup;
             btnShowReport.Font = new Font("Tahoma", 12F);
             btnShowReport.ForeColor = Color.White;
-            btnShowReport.Location = new Point(795, 65);
+            btnShowReport.Location = new Point(1014, 65);
             btnShowReport.Name = "btnShowReport";
             btnShowReport.Size = new Size(102, 30);
             btnShowReport.TabIndex = 3;
@@ -107,34 +143,25 @@ namespace InventoryManagement
             btnShowReport.UseVisualStyleBackColor = false;
             btnShowReport.Click += btnShowReport_Click;
             // 
-            // dgvReport
-            // 
-            dgvReport.BackgroundColor = Color.FromArgb(30, 30, 47);
-            dgvReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReport.Dock = DockStyle.Fill;
-            dgvReport.Location = new Point(0, 0);
-            dgvReport.Name = "dgvReport";
-            dgvReport.RowHeadersWidth = 51;
-            dgvReport.Size = new Size(868, 541);
-            dgvReport.TabIndex = 4;
-            // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
             lblTitle.Font = new Font("Tahoma", 22.2F);
             lblTitle.ForeColor = Color.Cyan;
-            lblTitle.Location = new Point(599, 23);
+            lblTitle.Location = new Point(818, 23);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(235, 36);
             lblTitle.TabIndex = 1;
             lblTitle.Text = "📊 تقارير المبيعات";
+            lblTitle.Click += lblTitle_Click;
             // 
             // ReportsForm
             // 
             AutoScaleDimensions = new SizeF(14F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 30);
-            ClientSize = new Size(910, 649);
+            ClientSize = new Size(1128, 690);
+            Controls.Add(lblSummary);
             Controls.Add(lblTitle);
             Controls.Add(btnShowReport);
             Controls.Add(lblTo);
@@ -152,7 +179,7 @@ namespace InventoryManagement
             StartPosition = FormStartPosition.CenterParent;
             Text = "تقارير المبيعات";
             pnReport.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvReport).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvReports).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -165,8 +192,8 @@ namespace InventoryManagement
         private Label lblFrom;
         private DateTimePicker dtpTo;
         private DateTimePicker dtpFrom;
-        private DataGridView dgvReport;
         private Button btnShowReport;
         private Label lblTitle;
+        private DataGridView dgvReports;
     }
 }

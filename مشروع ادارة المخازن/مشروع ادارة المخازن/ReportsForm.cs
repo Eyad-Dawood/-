@@ -15,15 +15,15 @@ namespace InventoryManagement
         private void btnShowReport_Click(object sender, EventArgs e)
         {
             DataTable dt = DatabaseManager.GetSalesReport(dtpFrom.Value, dtpTo.Value);
-            dgvReport.DataSource = dt;
+            dgvReports.DataSource = dt;
             decimal total = 0;
-            if (dt.Columns.Contains("????????"))
+            if (dt.Columns.Contains("الإجمالي"))
                 foreach (System.Data.DataRow row in dt.Rows)
-                    if (decimal.TryParse(row["????????"].ToString(), out decimal v)) total += v;
-            lblSummary.Text = $"?????? ??????: {total:F2} ?  |  ??? ????????: {dt.Rows.Count}";
+                    if (decimal.TryParse(row["الإجمالي"].ToString(), out decimal v)) total += v;
+            lblSummary.Text = $"إجمالي المبيعات: {total:F2} ج.م  |  عدد العمليات: {dt.Rows.Count}";
         }
 
-        private void lblSummary_Click(object sender, EventArgs e)
+        private void lblTitle_Click(object sender, EventArgs e)
         {
 
         }

@@ -25,11 +25,11 @@ namespace InventoryManagement
             lblQuantity = new Label();
             lblBarcode = new Label();
             pnCart = new Panel();
+            dgvCart = new DataGridView();
             btnClearCart = new Button();
             btnRemoveItem = new Button();
             btnConfirmSale = new Button();
             lblTotal = new Label();
-            dgvCart = new DataGridView();
             pnLowStockInfo = new Panel();
             lblLowStockTitle = new Label();
             pnLowStockList = new Panel();
@@ -60,6 +60,7 @@ namespace InventoryManagement
             txtBarcode.BackColor = Color.FromArgb(30, 30, 47);
             txtBarcode.BorderStyle = BorderStyle.FixedSingle;
             txtBarcode.Font = new Font("Tahoma", 12F);
+            txtBarcode.ForeColor = Color.Cornsilk;
             txtBarcode.Location = new Point(457, 116);
             txtBarcode.Name = "txtBarcode";
             txtBarcode.Size = new Size(183, 27);
@@ -105,15 +106,47 @@ namespace InventoryManagement
             // 
             // pnCart
             // 
-            pnCart.Controls.Add(btnClearCart);
-            pnCart.Controls.Add(btnRemoveItem);
-            pnCart.Controls.Add(btnConfirmSale);
-            pnCart.Controls.Add(lblTotal);
             pnCart.Controls.Add(dgvCart);
             pnCart.Location = new Point(21, 159);
             pnCart.Name = "pnCart";
-            pnCart.Size = new Size(641, 455);
+            pnCart.Size = new Size(891, 455);
             pnCart.TabIndex = 3;
+            // 
+            // dgvCart
+            // 
+            dgvCart.AllowUserToAddRows = false;
+            dgvCart.AllowUserToDeleteRows = false;
+            dgvCart.AllowUserToResizeColumns = false;
+            dgvCart.AllowUserToResizeRows = false;
+            dgvCart.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvCart.BackgroundColor = Color.FromArgb(18, 18, 30);
+            dgvCart.BorderStyle = BorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(30, 30, 47);
+            dataGridViewCellStyle1.Font = new Font("Tahoma", 10F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.CornflowerBlue;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 18, 30);
+            dataGridViewCellStyle2.Font = new Font("Tahoma", 10F, FontStyle.Bold);
+            dataGridViewCellStyle2.ForeColor = Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(99, 102, 241);
+            dataGridViewCellStyle2.SelectionForeColor = Color.White;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dgvCart.DefaultCellStyle = dataGridViewCellStyle2;
+            dgvCart.Dock = DockStyle.Fill;
+            dgvCart.EnableHeadersVisualStyles = false;
+            dgvCart.GridColor = Color.FromArgb(50, 50, 70);
+            dgvCart.Location = new Point(0, 0);
+            dgvCart.Name = "dgvCart";
+            dgvCart.RowHeadersWidth = 51;
+            dgvCart.Size = new Size(891, 455);
+            dgvCart.TabIndex = 0;
+            dgvCart.CellContentClick += dgvCart_CellContentClick;
             // 
             // btnClearCart
             // 
@@ -121,7 +154,7 @@ namespace InventoryManagement
             btnClearCart.FlatStyle = FlatStyle.Popup;
             btnClearCart.Font = new Font("Tahoma", 13.8F);
             btnClearCart.ForeColor = Color.White;
-            btnClearCart.Location = new Point(223, 351);
+            btnClearCart.Location = new Point(412, 629);
             btnClearCart.Name = "btnClearCart";
             btnClearCart.Size = new Size(201, 43);
             btnClearCart.TabIndex = 3;
@@ -135,7 +168,7 @@ namespace InventoryManagement
             btnRemoveItem.FlatStyle = FlatStyle.Popup;
             btnRemoveItem.Font = new Font("Tahoma", 13.8F);
             btnRemoveItem.ForeColor = Color.White;
-            btnRemoveItem.Location = new Point(20, 351);
+            btnRemoveItem.Location = new Point(221, 629);
             btnRemoveItem.Name = "btnRemoveItem";
             btnRemoveItem.Size = new Size(185, 43);
             btnRemoveItem.TabIndex = 2;
@@ -149,7 +182,7 @@ namespace InventoryManagement
             btnConfirmSale.FlatStyle = FlatStyle.Popup;
             btnConfirmSale.Font = new Font("Tahoma", 13.8F);
             btnConfirmSale.ForeColor = Color.White;
-            btnConfirmSale.Location = new Point(437, 351);
+            btnConfirmSale.Location = new Point(21, 629);
             btnConfirmSale.Name = "btnConfirmSale";
             btnConfirmSale.Size = new Size(194, 43);
             btnConfirmSale.TabIndex = 4;
@@ -161,49 +194,19 @@ namespace InventoryManagement
             // 
             lblTotal.AutoSize = true;
             lblTotal.ForeColor = Color.FromArgb(0, 192, 0);
-            lblTotal.Location = new Point(208, 411);
+            lblTotal.Location = new Point(619, 635);
             lblTotal.Name = "lblTotal";
             lblTotal.Size = new Size(183, 27);
             lblTotal.TabIndex = 1;
             lblTotal.Text = "الاجمالي 0.00 ج";
             // 
-            // dgvCart
-            // 
-            dgvCart.BackgroundColor = Color.FromArgb(18, 18, 30);
-            dgvCart.BorderStyle = BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(30, 30, 47);
-            dataGridViewCellStyle1.Font = new Font("Tahoma", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle1.ForeColor = Color.CornflowerBlue;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
-            dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            dgvCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(18, 18, 30);
-            dataGridViewCellStyle2.Font = new Font("Tahoma", 16.2F, FontStyle.Bold);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(99, 102, 241);
-            dataGridViewCellStyle2.SelectionForeColor = Color.White;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
-            dgvCart.DefaultCellStyle = dataGridViewCellStyle2;
-            dgvCart.Dock = DockStyle.Fill;
-            dgvCart.EnableHeadersVisualStyles = false;
-            dgvCart.GridColor = Color.FromArgb(50, 50, 70);
-            dgvCart.Location = new Point(0, 0);
-            dgvCart.Name = "dgvCart";
-            dgvCart.RowHeadersWidth = 51;
-            dgvCart.Size = new Size(641, 455);
-            dgvCart.TabIndex = 0;
-            // 
             // pnLowStockInfo
             // 
             pnLowStockInfo.BackColor = Color.FromArgb(30, 30, 47);
             pnLowStockInfo.Controls.Add(lblLowStockTitle);
-            pnLowStockInfo.Location = new Point(686, 93);
+            pnLowStockInfo.Location = new Point(935, 93);
             pnLowStockInfo.Name = "pnLowStockInfo";
-            pnLowStockInfo.Size = new Size(214, 544);
+            pnLowStockInfo.Size = new Size(214, 583);
             pnLowStockInfo.TabIndex = 4;
             // 
             // lblLowStockTitle
@@ -211,7 +214,7 @@ namespace InventoryManagement
             lblLowStockTitle.AutoSize = true;
             lblLowStockTitle.Font = new Font("Tahoma", 10.8F);
             lblLowStockTitle.ForeColor = Color.Gold;
-            lblLowStockTitle.Location = new Point(42, 14);
+            lblLowStockTitle.Location = new Point(39, 14);
             lblLowStockTitle.Name = "lblLowStockTitle";
             lblLowStockTitle.Size = new Size(136, 18);
             lblLowStockTitle.TabIndex = 0;
@@ -221,9 +224,9 @@ namespace InventoryManagement
             // 
             pnLowStockList.BackColor = Color.FromArgb(40, 40, 60);
             pnLowStockList.Controls.Add(lblLowStockItems);
-            pnLowStockList.Location = new Point(700, 135);
+            pnLowStockList.Location = new Point(949, 135);
             pnLowStockList.Name = "pnLowStockList";
-            pnLowStockList.Size = new Size(188, 479);
+            pnLowStockList.Size = new Size(188, 527);
             pnLowStockList.TabIndex = 5;
             // 
             // lblLowStockItems
@@ -238,7 +241,7 @@ namespace InventoryManagement
             // 
             lblTitle.AutoSize = true;
             lblTitle.ForeColor = Color.White;
-            lblTitle.Location = new Point(736, 22);
+            lblTitle.Location = new Point(985, 22);
             lblTitle.Name = "lblTitle";
             lblTitle.Size = new Size(125, 27);
             lblTitle.TabIndex = 6;
@@ -249,9 +252,13 @@ namespace InventoryManagement
             AutoScaleDimensions = new SizeF(14F, 27F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(18, 18, 30);
-            ClientSize = new Size(910, 649);
+            ClientSize = new Size(1167, 688);
+            Controls.Add(btnClearCart);
             Controls.Add(lblTitle);
+            Controls.Add(btnRemoveItem);
             Controls.Add(pnLowStockList);
+            Controls.Add(btnConfirmSale);
+            Controls.Add(lblTotal);
             Controls.Add(pnLowStockInfo);
             Controls.Add(pnCart);
             Controls.Add(lblBarcode);
@@ -269,7 +276,6 @@ namespace InventoryManagement
             StartPosition = FormStartPosition.CenterParent;
             Text = "الكاشير";
             pnCart.ResumeLayout(false);
-            pnCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvCart).EndInit();
             pnLowStockInfo.ResumeLayout(false);
             pnLowStockInfo.PerformLayout();
