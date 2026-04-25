@@ -1,4 +1,4 @@
-﻿using System.Drawing;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace InventoryManagement
@@ -18,8 +18,11 @@ namespace InventoryManagement
         private void InitializeComponent()
         {
             pnWelcome = new Panel();
+            lblCurrentAdminUser = new Label();
+            lblCurrentAdmin = new Label();
             lblWelcome = new Label();
             pnNavigation = new Panel();
+            btnLogout = new Button();
             btnReports = new Button();
             btnAlerts = new Button();
             btnCashier = new Button();
@@ -32,27 +35,49 @@ namespace InventoryManagement
             // pnWelcome
             // 
             pnWelcome.BackColor = Color.FromArgb(18, 18, 30);
+            pnWelcome.Controls.Add(lblCurrentAdminUser);
+            pnWelcome.Controls.Add(lblCurrentAdmin);
             pnWelcome.Controls.Add(lblWelcome);
             pnWelcome.Location = new Point(0, 0);
             pnWelcome.Name = "pnWelcome";
             pnWelcome.Size = new Size(910, 649);
             pnWelcome.TabIndex = 0;
             // 
+            // lblCurrentAdminUser
+            // 
+            lblCurrentAdminUser.ForeColor = Color.Silver;
+            lblCurrentAdminUser.Location = new Point(235, 355);
+            lblCurrentAdminUser.Name = "lblCurrentAdminUser";
+            lblCurrentAdminUser.Size = new Size(439, 31);
+            lblCurrentAdminUser.TabIndex = 2;
+            lblCurrentAdminUser.Text = "اسم المستخدم: admin";
+            lblCurrentAdminUser.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblCurrentAdmin
+            // 
+            lblCurrentAdmin.ForeColor = Color.Gold;
+            lblCurrentAdmin.Location = new Point(180, 315);
+            lblCurrentAdmin.Name = "lblCurrentAdmin";
+            lblCurrentAdmin.Size = new Size(549, 31);
+            lblCurrentAdmin.TabIndex = 1;
+            lblCurrentAdmin.Text = "المدير الحالي: مدير النظام";
+            lblCurrentAdmin.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // lblWelcome
             // 
-            lblWelcome.Dock = DockStyle.Fill;
-            lblWelcome.Font = new Font("Tahoma", 32F, FontStyle.Bold);
+            lblWelcome.Font = new Font("Tahoma", 28F, FontStyle.Bold);
             lblWelcome.ForeColor = Color.White;
-            lblWelcome.Location = new Point(0, 0);
+            lblWelcome.Location = new Point(77, 186);
             lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(910, 649);
+            lblWelcome.Size = new Size(760, 100);
             lblWelcome.TabIndex = 0;
-            lblWelcome.Text = "🏪 أهلاً بك في نظام إدارة المخزن";
+            lblWelcome.Text = "أهلاً بك في نظام إدارة المخزن";
             lblWelcome.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pnNavigation
             // 
             pnNavigation.BackColor = Color.FromArgb(30, 30, 47);
+            pnNavigation.Controls.Add(btnLogout);
             pnNavigation.Controls.Add(btnReports);
             pnNavigation.Controls.Add(btnAlerts);
             pnNavigation.Controls.Add(btnCashier);
@@ -62,6 +87,20 @@ namespace InventoryManagement
             pnNavigation.Name = "pnNavigation";
             pnNavigation.Size = new Size(263, 666);
             pnNavigation.TabIndex = 1;
+            // 
+            // btnLogout
+            // 
+            btnLogout.Cursor = Cursors.Hand;
+            btnLogout.FlatStyle = FlatStyle.Flat;
+            btnLogout.Font = new Font("Tahoma", 13.8F, FontStyle.Bold);
+            btnLogout.ForeColor = Color.FromArgb(255, 140, 140);
+            btnLogout.Location = new Point(9, 593);
+            btnLogout.Name = "btnLogout";
+            btnLogout.Size = new Size(241, 45);
+            btnLogout.TabIndex = 5;
+            btnLogout.Text = "تسجيل الخروج";
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnReports
             // 
@@ -87,7 +126,7 @@ namespace InventoryManagement
             btnAlerts.Name = "btnAlerts";
             btnAlerts.Size = new Size(241, 56);
             btnAlerts.TabIndex = 3;
-            btnAlerts.Text = "🔔 التنبيه";
+            btnAlerts.Text = "🔔 التنبيهات";
             btnAlerts.UseVisualStyleBackColor = true;
             btnAlerts.Click += btnAlerts_Click;
             // 
@@ -154,8 +193,11 @@ namespace InventoryManagement
         #endregion
 
         private Panel pnWelcome;
+        private Label lblCurrentAdminUser;
+        private Label lblCurrentAdmin;
         private Label lblWelcome;
         private Panel pnNavigation;
+        private Button btnLogout;
         private Button btnReports;
         private Button btnAlerts;
         private Button btnCashier;

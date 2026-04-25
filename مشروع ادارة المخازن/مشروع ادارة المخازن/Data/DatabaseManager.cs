@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Security.Cryptography;
 using Microsoft.Data.Sqlite;
 using InventoryManagement.Models;
 
@@ -38,9 +39,106 @@ namespace InventoryManagement.Data
                         Quantity        INTEGER NOT NULL,
                         Unit_Price      REAL    NOT NULL
                     );";
-                new SqliteCommand(createProducts, conn).ExecuteNonQuery();
-                new SqliteCommand(createSales, conn).ExecuteNonQuery();
-                new SqliteCommand(createSaleItems, conn).ExecuteNonQuery();
+                string createUsers = @"
+                    CREATE TABLE IF NOT EXISTS Users (
+                        User_ID         INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Full_Name       TEXT    NOT NULL,
+                        Username        TEXT    NOT NULL UNIQUE,
+                        Password_Hash   TEXT    NOT NULL,
+                        Password_Salt   TEXT    NOT NULL,
+                        Role            TEXT    NOT NULL DEFAULT 'Admin',
+                        Created_At      TEXT    NOT NULL
+                    );";
+                ExecuteNonQuery(conn, createProducts);
+                ExecuteNonQuery(conn, createSales);
+                ExecuteNonQuery(conn, createSaleItems);
+                ExecuteNonQuery(conn, createUsers);
+            }
+        }
+
+        public static bool HasAnyAdminUsers()
+        {
+            using (var conn = new SqliteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SqliteCommand("SELECT COUNT(*) FROM Users WHERE Role = 'Admin'", conn);
+                return Convert.ToInt32(cmd.ExecuteScalar()) > 0;
+            }
+        }
+
+        public static bool RegisterAdmin(string fullName, string username, string password, out string errorMessage)
+        {
+            errorMessage = string.Empty;
+
+            try
+            {
+                using (var conn = new SqliteConnection(ConnectionString))
+                {
+                    conn.Open();
+
+                    var existsCmd = new SqliteCommand(
+                        "SELECT COUNT(*) FROM Users WHERE LOWER(Username) = LOWER(@username)", conn);
+                    existsCmd.Parameters.AddWithValue("@username", username);
+                    if (Convert.ToInt32(existsCmd.ExecuteScalar()) > 0)
+                    {
+                        errorMessage = "اسم المستخدم مستخدم بالفعل. اختر اسم مستخدم آخر.";
+                        return false;
+                    }
+
+                    byte[] salt = RandomNumberGenerator.GetBytes(16);
+                    string hashText = HashPassword(password, salt);
+
+                    var insertCmd = new SqliteCommand(@"
+                        INSERT INTO Users (Full_Name, Username, Password_Hash, Password_Salt, Role, Created_At)
+                        VALUES (@fullName, @username, @hash, @salt, 'Admin', @createdAt)", conn);
+                    insertCmd.Parameters.AddWithValue("@fullName", fullName);
+                    insertCmd.Parameters.AddWithValue("@username", username);
+                    insertCmd.Parameters.AddWithValue("@hash", hashText);
+                    insertCmd.Parameters.AddWithValue("@salt", Convert.ToBase64String(salt));
+                    insertCmd.Parameters.AddWithValue("@createdAt", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    insertCmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+            catch
+            {
+                errorMessage = "تعذر إنشاء الحساب حالياً. حاول مرة أخرى.";
+                return false;
+            }
+        }
+
+        public static AdminUser? ValidateAdminLogin(string username, string password)
+        {
+            using (var conn = new SqliteConnection(ConnectionString))
+            {
+                conn.Open();
+                var cmd = new SqliteCommand(@"
+                    SELECT Full_Name, Username, Password_Hash, Password_Salt
+                    FROM Users
+                    WHERE LOWER(Username) = LOWER(@username) AND Role = 'Admin'", conn);
+                cmd.Parameters.AddWithValue("@username", username);
+
+                using (var reader = cmd.ExecuteReader())
+                {
+                    if (!reader.Read()) return null;
+
+                    string storedHash = reader["Password_Hash"]?.ToString() ?? string.Empty;
+                    string storedSalt = reader["Password_Salt"]?.ToString() ?? string.Empty;
+                    string computedHash = HashPassword(password, Convert.FromBase64String(storedSalt));
+
+                    if (!CryptographicOperations.FixedTimeEquals(
+                        Convert.FromBase64String(storedHash),
+                        Convert.FromBase64String(computedHash)))
+                    {
+                        return null;
+                    }
+
+                    return new AdminUser
+                    {
+                        FullName = reader["Full_Name"]?.ToString() ?? string.Empty,
+                        Username = reader["Username"]?.ToString() ?? string.Empty
+                    };
+                }
             }
         }
 
@@ -58,7 +156,7 @@ namespace InventoryManagement.Data
             return list;
         }
 
-        public static Product GetProductById(string id)
+        public static Product? GetProductById(string id)
         {
             using (var conn = new SqliteConnection(ConnectionString))
             {
@@ -165,7 +263,7 @@ namespace InventoryManagement.Data
                             SELECT last_insert_rowid();", conn, tx);
                         saleCmd.Parameters.AddWithValue("@date", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         saleCmd.Parameters.AddWithValue("@total", total);
-                        long saleId = (long)saleCmd.ExecuteScalar();
+                        long saleId = (long)(saleCmd.ExecuteScalar() ?? 0L);
 
                         foreach (var item in items)
                         {
@@ -232,11 +330,27 @@ namespace InventoryManagement.Data
 
         private static Product ReadProduct(SqliteDataReader r) => new Product
         {
-            Product_ID = r["Product_ID"].ToString(),
-            Product_Name = r["Product_Name"].ToString(),
+            Product_ID = r["Product_ID"]?.ToString() ?? string.Empty,
+            Product_Name = r["Product_Name"]?.ToString() ?? string.Empty,
             Quantity = Convert.ToInt32(r["Quantity"]),
             Minimum_Limit = Convert.ToInt32(r["Minimum_Limit"]),
             Price = Convert.ToDecimal(r["Price"])
         };
+
+        private static void ExecuteNonQuery(SqliteConnection conn, string sql)
+        {
+            new SqliteCommand(sql, conn).ExecuteNonQuery();
+        }
+
+        private static string HashPassword(string password, byte[] salt)
+        {
+            byte[] hash = Rfc2898DeriveBytes.Pbkdf2(
+                password,
+                salt,
+                100_000,
+                HashAlgorithmName.SHA256,
+                32);
+            return Convert.ToBase64String(hash);
+        }
     }
 }
