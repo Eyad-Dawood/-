@@ -59,3 +59,53 @@ D:\term 2\مشروع\مشروع ادارة المخازن\مشروع ادارة 
 D:\term 2\مشروع\مشروع ادارة المخازن\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
 D:\term 2\مشروع\مشروع ادارة المخازن\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 D:\term 2\مشروع\مشروع ادارة المخازن\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.csproj.AssemblyReference.cache
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.csproj.GenerateResource.cache
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.AssemblyInfoInputs.cache
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.AssemblyInfo.cs
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.csproj.CoreCompileInputs.cache
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.sourcelink.json
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\refint\مشروع ادارة المخازن.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.pdb
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\مشروع ادارة المخازن.exe
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\مشروع ادارة المخازن.deps.json
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\مشروع ادارة المخازن.runtimeconfig.json
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\مشروع ادارة المخازن.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\مشروع ادارة المخازن.pdb
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\Microsoft.Data.Sqlite.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\SQLitePCLRaw.batteries_v2.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\SQLitePCLRaw.core.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\SQLitePCLRaw.provider.e_sqlite3.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\browser-wasm\nativeassets\net9.0\e_sqlite3.a
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-arm\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-arm64\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-armel\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-mips64\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-musl-arm\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-musl-arm64\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-musl-riscv64\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-musl-s390x\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-musl-x64\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-ppc64le\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-riscv64\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-s390x\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-x64\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\linux-x86\native\libe_sqlite3.so
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\maccatalyst-arm64\native\libe_sqlite3.dylib
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\maccatalyst-x64\native\libe_sqlite3.dylib
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\osx-arm64\native\libe_sqlite3.dylib
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\osx-x64\native\libe_sqlite3.dylib
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\win-arm\native\e_sqlite3.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\win-arm64\native\e_sqlite3.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\win-x64\native\e_sqlite3.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\bin\Debug\net10.0-windows\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\InventoryManagement.Form1.resources
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\_____ __.075805B4.Up2Date
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\مشروع ادارة المخازن.genruntimeconfig.cache
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\ref\مشروع ادارة المخازن.dll
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\InventoryManagement.AlertsForm.resources
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\InventoryManagement.CashierForm.resources
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\InventoryManagement.ReportsForm.resources
+C:\Users\Eyad\source\repos\-\مشروع ادارة المخازن\مشروع ادارة المخازن\obj\Debug\net10.0-windows\InventoryManagement.StoreManagementForm.resources

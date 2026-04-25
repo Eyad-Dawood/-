@@ -1,4 +1,4 @@
-namespace مشروع_ادارة_المخازن
+namespace InventoryManagement
 {
     internal static class Program
     {

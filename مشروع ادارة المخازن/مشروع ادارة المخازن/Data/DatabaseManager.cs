@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using Microsoft.Data.Sqlite;
-using مشروع_ادارة_المخازن.Models;
+using InventoryManagement.Models;
 
-namespace مشروع_ادارة_المخازن.Data
+namespace InventoryManagement.Data
 {
     public class DatabaseManager
     {

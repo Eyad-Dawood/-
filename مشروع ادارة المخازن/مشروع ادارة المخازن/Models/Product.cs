@@ -1,4 +1,4 @@
-﻿namespace مشروع_ادارة_المخازن.Models
+﻿namespace InventoryManagement.Models
 {
     public class Product
     {
